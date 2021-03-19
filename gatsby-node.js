@@ -4,10 +4,10 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  // Define a template for product
+  const product = path.resolve(`./src/templates/product.js`)
 
-  // Get all markdown blog posts sorted by date
+  // Get all markdown products sorted by date
   const result = await graphql(
     `
       {
@@ -28,26 +28,27 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (result.errors) {
     reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
+      `There was an error loading your products`,
       result.errors
     )
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const products = result.data.allMarkdownRemark.nodes
 
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
+  // Create products pages
+  // But only if there's at least one markdown file found at "content/products" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+  if (products.length > 0) {
+    products.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : products[index - 1].id
+      const nextPostId =
+        index === products.length - 1 ? null : products[index + 1].id
 
       createPage({
         path: post.fields.slug,
-        component: blogPost,
+        component: product,
         context: {
           id: post.id,
           previousPostId,
@@ -80,7 +81,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   // Also explicitly define the Markdown frontmatter
   // This way the "MarkdownRemark" queries will return `null` even when no
-  // blog posts are stored inside "content/blog" instead of returning an error
+  // products are stored inside "content/products" instead of returning an error
   createTypes(`
     type SiteSiteMetadata {
       author: Author
