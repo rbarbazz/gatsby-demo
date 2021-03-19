@@ -65,8 +65,9 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        price
         description
+        image
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

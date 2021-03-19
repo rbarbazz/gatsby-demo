@@ -7,12 +7,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Define a template for product
   const product = path.resolve(`./src/templates/product.js`)
 
-  // Get all markdown products sorted by date
+  // Get all markdown products sorted by title
   const result = await graphql(
     `
       {
         allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
+          sort: { fields: [frontmatter___title], order: ASC }
           limit: 1000
         ) {
           nodes {
@@ -100,8 +100,9 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type Frontmatter {
       title: String
+      price: String
       description: String
-      date: Date @dateformat
+      image: String
     }
 
     type Fields {
