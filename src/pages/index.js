@@ -1,9 +1,8 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 
-import { Box, Flex, Heading, Image, Spacer } from "@chakra-ui/react"
+import { Box, Flex, Heading, Image } from "@chakra-ui/react"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const SiteIndex = ({ data, location }) => {
