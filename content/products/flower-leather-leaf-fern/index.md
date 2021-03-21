@@ -2,5 +2,5 @@
 title: Flower - Leather Leaf Fern
 price: $11.23
 description: In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.
-image: https://dummyimage.com/100x250.png/cc0000/ffffff
+image: https://dummyimage.com/800x500.png/cc0000/ffffff
 ---
