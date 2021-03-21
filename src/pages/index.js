@@ -1,61 +1,66 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
+
+import { Box, Flex, Heading, Image, Spacer } from "@chakra-ui/react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const SiteIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const products = data.allMarkdownRemark.nodes
+  const pageTitle = "Catalog"
 
   if (products.length === 0) {
     return (
-      <Layout location={location} title={siteTitle}>
-        <SEO title="All products" />
+      <>
+        <SEO title={pageTitle} />
         <p>
           No products found. Add markdown products to "content/products" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
           gatsby-config.js).
         </p>
-      </Layout>
+      </>
     )
   }
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All products" />
-      <ol style={{ listStyle: `none` }}>
-        {products.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+    <>
+      <Heading as="h1" marginTop="2rem" textAlign="center">
+        {pageTitle}
+      </Heading>
+      <SEO title={pageTitle} />
+      <Flex justifyContent="space-around" margin="2rem auto" wrap="wrap">
+        {products.map(product => {
+          const { title, price, image } = product.frontmatter
 
           return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
+            <Box
+              maxW="24rem"
+              borderWidth="1px"
+              borderRadius="lg"
+              overflow="hidden"
+              margin="0 1rem 2rem"
+            >
+              <Box as="a" href={product.fields.slug}>
+                <Image src={image} alt={title} />
+                <Box p="6">
+                  <Box
+                    mt="1"
+                    fontWeight="semibold"
+                    as="h4"
+                    lineHeight="tight"
+                    isTruncated
+                  >
+                    {title}
+                  </Box>
+                  <Box>{price}</Box>
+                </Box>
+              </Box>
+            </Box>
           )
         })}
-      </ol>
-    </Layout>
+      </Flex>
+    </>
   )
 }
 

@@ -8,6 +8,11 @@
     "url": "https://github.com/rbarbazz/gatsby-demo/issues"
   },
   "dependencies": {
+    "@chakra-ui/gatsby-plugin": "^1.0.2",
+    "@chakra-ui/react": "^1.4.1",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "framer-motion": "^4.0.0",
     "gatsby": "^3.0.1",
     "gatsby-plugin-image": "^1.0.0",
     "gatsby-plugin-react-helmet": "^4.0.0",

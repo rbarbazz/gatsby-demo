@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: `https://gatsby-demo-fnd.rbarbazz.com/`,
   },
   plugins: [
+    `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
