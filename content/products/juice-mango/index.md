@@ -2,5 +2,5 @@
 title: Juice - Mango
 price: $47.75
 description: In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.
-image: https://dummyimage.com/800x500.png/dddddd/000000
+image: https://dummyimage.com/800x500/9ede73/fff
 ---

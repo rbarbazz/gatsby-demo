@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import { Box, Flex, Heading, Image } from "@chakra-ui/react"
 
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const SiteIndex = ({ data, location }) => {
@@ -11,19 +12,19 @@ const SiteIndex = ({ data, location }) => {
 
   if (products.length === 0) {
     return (
-      <>
+      <Layout>
         <SEO title={pageTitle} />
         <p>
           No products found. Add markdown products to "content/products" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
           gatsby-config.js).
         </p>
-      </>
+      </Layout>
     )
   }
 
   return (
-    <>
+    <Layout>
       <Heading as="h1" marginTop="2rem" textAlign="center">
         {pageTitle}
       </Heading>
@@ -43,6 +44,7 @@ const SiteIndex = ({ data, location }) => {
               <Box as="a" href={product.fields.slug}>
                 <Image src={image} alt={title} />
                 <Box p="6">
+                  <Box>{title}</Box>
                   <Box
                     mt="1"
                     fontWeight="semibold"
@@ -50,16 +52,15 @@ const SiteIndex = ({ data, location }) => {
                     lineHeight="tight"
                     isTruncated
                   >
-                    {title}
+                    {price}
                   </Box>
-                  <Box>{price}</Box>
                 </Box>
               </Box>
             </Box>
           )
         })}
       </Flex>
-    </>
+    </Layout>
   )
 }
 

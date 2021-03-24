@@ -1,46 +1,38 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
+
+import { Box, Container, Heading, Image, Text } from "@chakra-ui/react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const ProductTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
+  const product = data.markdownRemark
+  const { title, description, price, image } = product.frontmatter
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        title={product.frontmatter.title}
+        description={product.frontmatter.description}
       />
-      <nav className="product-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+      <Heading as="h1" marginTop="2rem" textAlign="center">
+        Product
+      </Heading>
+      <Container margin="2rem auto">
+        <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
+          <Image src={image} alt={title} />
+          <Text
+            display="flex"
+            justifyContent="space-between"
+            margin="1rem 2rem 0"
+          >
+            {title}
+            <strong>{price}</strong>
+          </Text>
+          <Text margin="2rem">{description}</Text>
+        </Box>
+      </Container>
     </Layout>
   )
 }
@@ -48,41 +40,15 @@ const ProductTemplate = ({ data, location }) => {
 export default ProductTemplate
 
 export const pageQuery = graphql`
-  query ProductBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
+  query ProductBySlug($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
-      excerpt(pruneLength: 160)
       html
       frontmatter {
         title
         price
         description
         image
-      }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
       }
     }
   }

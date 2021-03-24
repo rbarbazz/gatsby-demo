@@ -2,5 +2,5 @@
 title: Langers - Cranberry Cocktail
 price: $15.51
 description: Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.
-image: https://dummyimage.com/800x500.png/ff4444/ffffff
+image: https://dummyimage.com/800x500/9ede73/fff
 ---
