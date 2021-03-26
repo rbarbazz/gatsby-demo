@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.1.5",
     "framer-motion": "^4.0.0",
     "gatsby": "^3.0.1",
-    "gatsby-plugin-image": "^1.0.0",
+    "gatsby-plugin-image": "^1.1.2",
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sharp": "^3.0.0",
     "gatsby-remark-copy-linked-files": "^3.0.0",

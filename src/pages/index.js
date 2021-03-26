@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link as GatsbyLink } from "gatsby"
 
 import { Box, Flex, Heading, Image } from "@chakra-ui/react"
 
@@ -41,7 +41,7 @@ const SiteIndex = ({ data, location }) => {
               overflow="hidden"
               margin="0 1rem 2rem"
             >
-              <Box as="a" href={product.fields.slug}>
+              <Box as={GatsbyLink} to={product.fields.slug}>
                 <Image src={image} alt={title} />
                 <Box p="6">
                   <Box>{title}</Box>

@@ -1,5 +1,8 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const {
+  createFilePath,
+  createRemoteFileNode,
+} = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -59,10 +62,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+exports.onCreateNode = async ({
+  actions,
+  cache,
+  createNodeId,
+  getNode,
+  node,
+  store,
+}) => {
+  const { createNode, createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (
+    node.internal.type === `MarkdownRemark` &&
+    node.frontmatter.image !== null
+  ) {
     const value = createFilePath({ node, getNode })
 
     createNodeField({
@@ -70,6 +83,19 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value,
     })
+
+    let fileNode = await createRemoteFileNode({
+      url: `${node.frontmatter.image}&text=${value}`, // string that points to the URL of the image
+      parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+      createNode, // helper function in gatsby-node to generate the node
+      createNodeId, // helper function in gatsby-node to generate the node id
+      cache, // Gatsby's cache
+    })
+
+    // if the file was created, attach the new node to the parent node
+    if (fileNode) {
+      node.featuredImg___NODE = fileNode.id
+    }
   }
 }
 
@@ -95,6 +121,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
+      featuredImg: File @link(from: "featuredImg___NODE")
       fields: Fields
     }
 

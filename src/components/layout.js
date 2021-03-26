@@ -5,8 +5,8 @@ import { Link } from "@chakra-ui/react"
 const Layout = ({ children }) => (
   <div>
     <header style={{ margin: "2rem 0 0 4rem" }}>
-      <Link>
-        <GatsbyLink to="/">Catalog</GatsbyLink>
+      <Link as={GatsbyLink} to="/">
+        Catalog
       </Link>
     </header>
     <main>{children}</main>

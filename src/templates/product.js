@@ -1,14 +1,15 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-
-import { Box, Container, Heading, Image, Text } from "@chakra-ui/react"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { Box, Container, Heading, Text } from "@chakra-ui/react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const ProductTemplate = ({ data, location }) => {
   const product = data.markdownRemark
-  const { title, description, price, image } = product.frontmatter
+  const { title, description, price } = product.frontmatter
+  const { featuredImg } = product
 
   return (
     <Layout>
@@ -21,7 +22,10 @@ const ProductTemplate = ({ data, location }) => {
       </Heading>
       <Container margin="2rem auto">
         <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
-          <Image src={image} alt={title} />
+          <GatsbyImage
+            alt={title}
+            image={featuredImg.childImageSharp.gatsbyImageData}
+          />
           <Text
             display="flex"
             justifyContent="space-between"
@@ -48,7 +52,15 @@ export const pageQuery = graphql`
         title
         price
         description
-        image
+      }
+      featuredImg {
+        childImageSharp {
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+        }
       }
     }
   }
