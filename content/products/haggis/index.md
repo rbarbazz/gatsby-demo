@@ -2,5 +2,5 @@
 title: Haggis
 price: $96.18
 description: Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-image: https://dummyimage.com/800x500/9ede73/fff.png
+image: https://dummyimage.com/1000x600/9ede73/fff.png
 ---

@@ -2,5 +2,5 @@
 title: Soda Water - Club Soda, 355 Ml
 price: $74.01
 description: Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.
-image: https://dummyimage.com/800x500/9ede73/fff.png
+image: https://dummyimage.com/1000x600/9ede73/fff.png
 ---

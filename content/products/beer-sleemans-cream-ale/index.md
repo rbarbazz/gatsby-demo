@@ -2,5 +2,5 @@
 title: Beer - Sleemans Cream Ale
 price: $84.29
 description: Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.
-image: https://dummyimage.com/800x500/9ede73/fff.png
+image: https://dummyimage.com/1000x600/9ede73/fff.png
 ---

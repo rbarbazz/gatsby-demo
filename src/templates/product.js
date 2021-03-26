@@ -1,7 +1,7 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
 import { Box, Container, Heading, Text } from "@chakra-ui/react"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { graphql } from "gatsby"
+import * as React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -59,6 +59,7 @@ export const pageQuery = graphql`
             layout: FULL_WIDTH
             placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
+            quality: 80
           )
         }
       }

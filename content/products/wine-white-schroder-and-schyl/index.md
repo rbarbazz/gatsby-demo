@@ -2,5 +2,5 @@
 title: Wine - White, Schroder And Schyl
 price: $3.12
 description: Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.
-image: https://dummyimage.com/800x500/9ede73/fff.png
+image: https://dummyimage.com/1000x600/9ede73/fff.png
 ---

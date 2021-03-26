@@ -1,7 +1,7 @@
-import * as React from "react"
-import { graphql, Link as GatsbyLink } from "gatsby"
-
 import { Box, Flex, Heading, Image } from "@chakra-ui/react"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { graphql, Link as GatsbyLink } from "gatsby"
+import * as React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -31,31 +31,38 @@ const SiteIndex = ({ data, location }) => {
       <SEO title={pageTitle} />
       <Flex justifyContent="space-around" margin="2rem auto" wrap="wrap">
         {products.map(product => {
-          const { title, price, image } = product.frontmatter
+          const { title, price } = product.frontmatter
+          const { featuredImg } = product
 
           return (
             <Box
-              maxW="24rem"
+              key={title}
               borderWidth="1px"
               borderRadius="lg"
               overflow="hidden"
               margin="0 1rem 2rem"
             >
-              <Box as={GatsbyLink} to={product.fields.slug}>
-                <Image src={image} alt={title} />
-                <Box p="6">
-                  <Box>{title}</Box>
-                  <Box
-                    mt="1"
-                    fontWeight="semibold"
-                    as="h4"
-                    lineHeight="tight"
-                    isTruncated
-                  >
-                    {price}
+              <GatsbyLink to={product.fields.slug}>
+                <Box width="16rem">
+                  <Image
+                    as={GatsbyImage}
+                    alt={title}
+                    image={featuredImg.childImageSharp.gatsbyImageData}
+                  />
+                  <Box p="6">
+                    <Box>{title}</Box>
+                    <Box
+                      mt="1"
+                      fontWeight="semibold"
+                      as="h4"
+                      lineHeight="tight"
+                      isTruncated
+                    >
+                      {price}
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
+              </GatsbyLink>
             </Box>
           )
         })}
@@ -83,7 +90,16 @@ export const pageQuery = graphql`
           title
           price
           description
-          image
+        }
+        featuredImg {
+          childImageSharp {
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+              quality: 80
+            )
+          }
         }
       }
     }
