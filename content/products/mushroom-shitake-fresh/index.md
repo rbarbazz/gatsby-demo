@@ -2,5 +2,5 @@
 title: Mushroom - Shitake, Fresh
 price: $48.65
 description: Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
-image: https://dummyimage.com/1000x600/9ede73/fff.png
+image: https://dummyimage.com/1000x600/000000/fff.png
 ---

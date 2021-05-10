@@ -2,5 +2,5 @@
 title: Ecolab Digiclean Mild Fm
 price: $69.91
 description: Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.
-image: https://dummyimage.com/1000x600/9ede73/fff.png
+image: https://dummyimage.com/1000x600/000000/fff.png
 ---

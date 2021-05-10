@@ -2,5 +2,5 @@
 title: Pastrami
 price: $67.67
 description: Phasellus in felis. Donec semper sapien a libero. Nam dui.
-image: https://dummyimage.com/1000x600/9ede73/fff.png
+image: https://dummyimage.com/1000x600/000000/fff.png
 ---
