@@ -2,5 +2,5 @@
 title: Chocolate Bar - Smarties
 price: $97.97
 description: Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.
-image: https://dummyimage.com/1000x600/000000/fff.png
+image: https://via.placeholder.com/1000x600/000000/fff.png
 ---

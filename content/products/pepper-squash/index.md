@@ -2,5 +2,5 @@
 title: Pepper Squash
 price: $2.94
 description: Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.
-image: https://dummyimage.com/1000x600/000000/fff.png
+image: https://via.placeholder.com/1000x600/000000/fff.png
 ---
