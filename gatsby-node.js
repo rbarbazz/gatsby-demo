@@ -85,7 +85,7 @@ exports.onCreateNode = async ({
     })
 
     let fileNode = await createRemoteFileNode({
-      url: `${node.frontmatter.image}&text=${value}`, // string that points to the URL of the image
+      url: `${node.frontmatter.image}?text=${value}`, // string that points to the URL of the image
       parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
       createNode, // helper function in gatsby-node to generate the node
       createNodeId, // helper function in gatsby-node to generate the node id
